@@ -3,11 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
-	"log"
 	"os"
 	"path/filepath"
 	"runtime"
-	"runtime/pprof"
 	"slices"
 	"strings"
 
@@ -42,10 +40,13 @@ func main() {
 	var extensions stringFlags
 	flag.Var(&extensions, "extensions", "A semicolon-separated list of project file extensions to include when traversing the hierarchy (default .als;.cpr).")
 
-	var cpuProfile string
-	flag.StringVar(&cpuProfile, "cpu-prof", "", "Write CPU profile to a file (default.pgo recommended).")
-
 	flag.Parse()
+
+	if flag.NArg() < 1 {
+		fmt.Fprintf(os.Stderr, "go-plugins [-num-threads <n>] [-ignore-folders folder[;folder;...]] [-extensions extension[;extension;...]] <file|folder> [<file|folder> ...]\n\n")
+		flag.PrintDefaults()
+		return
+	}
 
 	if len(extensions) == 0 {
 		extensions = []string{alsExtension, cprExtension}
@@ -55,19 +56,6 @@ func main() {
 	fmt.Println("Ignoring these folders:", foldersToIgnore)
 	fmt.Println("Scanning these items:", flag.Args())
 	fmt.Println()
-
-	if cpuProfile != "" {
-		file, err := os.Create(cpuProfile)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		if err = pprof.StartCPUProfile(file); err != nil {
-			log.Fatal(err)
-		}
-
-		defer pprof.StopCPUProfile()
-	}
 
 	coutil.WorkPool(
 		*numThreadsFlag,

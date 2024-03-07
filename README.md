@@ -125,7 +125,7 @@ Please see the included BSD 3-clause LICENSE file.
 
 This program makes use of the following third-party packages. Please refer to these projects for additional licensing information.
 
+* github.com/MrSplidge/go-coutil v1.0.0 // BSD 3-clause License
 * github.com/MrSplidge/go-xmldom v1.1.4 // based on https://github.com/subchen/go-xmldom (Apache License 2.0 Jan 2004)
 * github.com/antchfx/xpath v1.2.5 // (MIT License)
 * github.com/mattn/go-isatty v0.0.20 // (MIT License (Expat))
-* golang.org/x/exp v0.0.0-20240222234643-814bf88cf225 // (BSD 3-clause License)

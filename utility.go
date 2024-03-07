@@ -8,7 +8,6 @@ import (
 	"strings"
 
 	"github.com/mattn/go-isatty"
-	"golang.org/x/exp/constraints"
 )
 
 const (
@@ -27,24 +26,6 @@ func maybeUnused(x ...interface{}) {}
 func padStringToWidth(text string, width int, padRune rune) string {
 	dots := max(0, width-len(text))
 	return text + strings.Repeat(string(padRune), dots)
-}
-
-// Calculates the smaller of two things.
-func min[Ord constraints.Ordered](a Ord, b Ord) Ord {
-	if a < b {
-		return a
-	} else {
-		return b
-	}
-}
-
-// Calculates the larger of two things.
-func max[Ord constraints.Ordered](a Ord, b Ord) Ord {
-	if a < b {
-		return b
-	} else {
-		return a
-	}
 }
 
 // Scans the file and/or folder paths passed in [paths], applies filters to the files and folders found therein, and returns a slice containing the fully-qualified paths.

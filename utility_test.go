@@ -13,42 +13,6 @@ func TestPadStringToWidth(t *testing.T) {
 	}
 }
 
-func TestMin(t *testing.T) {
-	// Test case 1: Testing with integers
-	resultInt := min(5, 3)
-	if resultInt != 3 {
-		t.Errorf("Expected min(5, 3) to be 3, but got %d", resultInt)
-	}
-
-	// Test case 1: Testing with integers
-	resultInt2 := min(3, 3)
-	if resultInt2 != 3 {
-		t.Errorf("Expected min(3, 3) to be 3, but got %d", resultInt2)
-	}
-
-	// Test case 2: Testing with floats
-	resultFloat := min(3.14, 2.71)
-	if resultFloat != 2.71 {
-		t.Errorf("Expected min(3.14, 2.71) to be 2.71, but got %f", resultFloat)
-	}
-}
-
-func TestMax(t *testing.T) {
-	resultInt := max(5, 2)
-	if resultInt != 5 {
-		t.Errorf("Expected max(5, 2) to be 5, but got %d", resultInt)
-	}
-
-	resultInt2 := max(3, 3)
-	if resultInt2 != 3 {
-		t.Errorf("Expected max(3, 3) to be 3, but got %d", resultInt2)
-	}
-
-	resultFloat := max(3.14, 2.71)
-	if resultFloat != 3.14 {
-		t.Errorf("Expected max(3.14, 2.71) to be 3.14, but got %f", resultFloat)
-	}
-}
 func TestDedup(t *testing.T) {
 	// Test case with duplicate elements
 	input1 := []int{1, 2, 2, 3, 6, 6, 4, 4, 4, 5}

@@ -28,15 +28,18 @@ func newProjectInformation(projectPath string) projectInformation {
 	}
 }
 
+// Log an error message against a project.
 func (pi *projectInformation) logError(text string) {
 	pi.errors = append(pi.errors, text)
 }
 
+// Map a plugin to a track, and the reverse (track to plugin).
 func (pi *projectInformation) mapTrackToPlugin(plugin, track string) {
 	pi.pluginToTrackMap[plugin] = append(pi.pluginToTrackMap[plugin], track)
 	pi.trackToPluginMap[track] = append(pi.trackToPluginMap[track], plugin)
 }
 
+// Generate a coloured description of a project.
 func (pi *projectInformation) ColouredString(projectColour, keyColour, valueColour, errorColour, resetColour string) string {
 	type mapType int
 
@@ -88,6 +91,7 @@ func (pi *projectInformation) ColouredString(projectColour, keyColour, valueColo
 	return sb.String()
 }
 
+// Generate a coloured or monochrome description for a project based on whether stdout is a terminal or a file.
 func (pi *projectInformation) String() string {
 	isAtty := isatty.IsTerminal(os.Stdout.Fd())
 	if isAtty {
