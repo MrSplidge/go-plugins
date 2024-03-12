@@ -4,7 +4,6 @@ The go-plugins utility can examine ALS (11.0_433, 11.0_436, 11.0_11300) and CPR 
 
 # Building
 
-* ```go get```
 * ```go build```
 
 # Usage
