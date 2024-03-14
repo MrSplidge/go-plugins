@@ -1,4 +1,4 @@
-module go-plugins
+module github.com/MrSplidge/go-plugins
 
 go 1.22.0
 
