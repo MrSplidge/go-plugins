@@ -16,7 +16,7 @@ func findTrackNameForNode(node *xmldom.Node) string {
 			break
 		} else {
 			// Look for a Name element below a track element.
-			const nameElementQuery = "Name[parent::MidiTrack|parent::AudioTrack|parent::MasterTrack|parent::GroupTrack|parent::ReturnTrack]/EffectiveName"
+			const nameElementQuery = "Name[parent::MidiTrack|parent::AudioTrack|parent::MainTrack|parent::MasterTrack|parent::GroupTrack|parent::ReturnTrack]/EffectiveName"
 			for _, match := range node.Query(nameElementQuery) {
 				return match.GetAttributeValue("Value")
 			}
